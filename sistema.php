@@ -10,6 +10,14 @@
         $logado = $_SESSION['name'];
     }
 
+    if(!empty($_GET['search'])){
+        
+    }else{
+        
+    }
+
+
+
     $sql = "SELECT * FROM usuarios ORDER BY id DESC";
     $res = $conexão->query($sql);
     //print_r($res);
@@ -52,7 +60,7 @@
     <?= "<p>Bem Vindo <u>$logado</u></p>" ?>
     <div class="box-search">
         <input type="search" class="form-control w-25" name="busca" id="busca" placeholder="Pesquisar">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" onclick="searchData()">
             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
                 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/>
             </svg>
@@ -109,4 +117,19 @@
         </table>
     </div>
 </body>
+<script>
+    //Mecanismo de Busca com JS
+    var search = document.getElementById('busca');
+   
+    //Adicionando funcionalidade para a tecla ENTER
+    search.addEventListener("keydown", function(event){
+        if(event.key === "Enter"){
+            searchData();
+        }
+    });
+
+    function searchData(){
+        window.location = 'sistema.php?search='+search.value;
+    }
+</script>
 </html>
