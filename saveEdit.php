@@ -1,6 +1,6 @@
 <?php 
     include_once('config.php');
-
+    //Editando os registros dentro do banco de dados
     if(isset($_POST['update'])){
         $name = $_POST['nome'];
         $email = $_POST['email'];

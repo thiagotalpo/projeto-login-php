@@ -7,13 +7,15 @@
         unset($_SESSION['senha']);
         header('Location: login.php');
     } else {
-        $logado = $_SESSION['name'];
+        $logado = $_SESSION['email'];
     }
 
     if(!empty($_GET['search'])){
+        $data = $_GET['search'];
+        $sql = "SELECT * FROM usuarios WHERE id LIKE '%$data%' or nome LIKE '%$data%' or email LIKE '%$data%' ORDER BY id DESC";
         
     }else{
-        
+        $sql = "SELECT * FROM usuarios ORDER BY id DESC";
     }
 
 
